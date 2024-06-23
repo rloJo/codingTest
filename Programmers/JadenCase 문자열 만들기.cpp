@@ -20,7 +20,3 @@ string solution(string s) {
   
     return s;
 }
-
-int main() {
-    solution("3people unFollowed me");
-}

@@ -1,0 +1,49 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int T;
+int N;
+vector<int> pre;
+vector<int> in;
+
+void init() {
+	ios::sync_with_stdio(false);
+	cin.tie(0);
+	cout.tie(0);
+}
+
+void input() {
+	cin >> T;
+}
+
+void post(int st, int end, int pos) {
+	for (int i = st; i < end; i++) {
+		if (in[i] == pre[pos]) {
+			post(st, i, pos + 1);
+			post(i + 1, end, pos + 1 + i - st);
+			cout << pre[pos] << " ";
+		}
+	}
+}
+
+
+void solution() {
+	while (T--) {
+		cin >> N;
+		pre = vector<int>(N);
+		in = vector<int>(N);
+		for (int i = 0; i < N; i++) cin >> pre[i];
+		for (int i = 0; i < N; i++) cin >> in[i];
+		post(0, N, 0);
+		cout << "\n";
+	}
+
+}
+
+int main() {
+	init();
+	input();
+	solution();
+}
